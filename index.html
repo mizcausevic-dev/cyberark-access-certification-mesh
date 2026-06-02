@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>CyberArk Access Certification Mesh — Kinetic Gain operator surface</title>
+<meta name="description" content="Operator surface for CyberArk PAM safe certifications, anomaly detection, and ServiceNow access-review ticket sync." />
+<meta name="theme-color" content="#0A0B11" />
+<link rel="canonical" href="https://cert.kineticgain.com/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="CyberArk Access Certification Mesh" />
+<meta property="og:description" content="Operator surface for CyberArk PAM safe certifications, anomaly detection, and ServiceNow access-review ticket sync." />
+<meta property="og:url" content="https://cert.kineticgain.com/" />
+<style>
+  :root {
+    --onyx:#0A0B11;--ground:#0A0B11;--ink:#F5F2EB;--ink-dim:#9AA1AD;--ink-faint:#565C68;
+    --surface:rgba(255,255,255,.025);--surface-2:rgba(255,255,255,.045);
+    --line:rgba(255,255,255,.08);--line-soft:rgba(255,255,255,.05);
+    --emerald:#34D399;--cyan:#22D3EE;--violet:#A78BFA;--amber:#FBBF24;--coral:#FB7185;--danger:#FF7F9B;
+    --ok:#69E3B3;--warn:#FBBF24;--high:#FB7185;--crit:#FF6B95;
+    --signal:#6E879A;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,"Cascadia Code",Consolas,monospace;
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --radius:14px;--maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ground);color:var(--ink);font-family:var(--font);line-height:1.5;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 600px at 12% -5%,rgba(124,92,232,.14),transparent 60%),radial-gradient(800px 600px at 92% 8%,rgba(34,211,238,.09),transparent 55%),radial-gradient(1000px 700px at 70% 100%,rgba(71,91,107,.16),transparent 60%),linear-gradient(180deg,#0A0B11 0%,#0C0E16 55%,#0A0C13 100%)}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+  /* Header */
+  header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--ground) 72%,transparent);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid var(--line-soft)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+  .kg-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);flex-shrink:0}
+  .kg-mark{height:22px;width:auto;display:block;flex:none}
+  .kg-mark .anchor{fill:var(--signal)}.kg-mark .bar{fill:var(--ink)}
+  .kg-word{font-weight:600;font-size:16px;letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+  .kg-word-dim{color:var(--ink-dim);font-weight:400}
+  .nav-links{display:flex;align-items:center;gap:22px;flex-wrap:nowrap}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;transition:color .25s var(--ease);cursor:pointer;white-space:nowrap}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a.active{color:var(--emerald)}
+  .btn-start{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:all .25s var(--ease);flex-shrink:0;background:transparent}
+  .btn-start:hover{color:var(--onyx);background:var(--emerald);border-color:var(--emerald);text-decoration:none}
+  @media (max-width:920px){.nav-links{gap:14px}.nav-links a{font-size:11px}.kg-word-dim{display:none}}
+  @media (max-width:720px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{padding:64px 0 36px;position:relative;z-index:2}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:linear-gradient(120deg,var(--violet),var(--cyan));box-shadow:0 0 12px rgba(124,92,232,.7)}
+  h1{font-size:clamp(32px,4.6vw,54px);font-weight:600;line-height:1.05;letter-spacing:-.035em;margin:0 0 18px;max-width:24ch}
+  h1 .grad{background:linear-gradient(110deg,var(--violet),var(--cyan) 55%,var(--emerald));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{font-size:clamp(15px,1.4vw,17px);color:var(--ink-dim);line-height:1.6;max-width:64ch;margin-bottom:24px}
+  .hero-sub strong{color:var(--ink);font-weight:500}
+
+  /* Stat tiles */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:24px 0 0}
+  .stat{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px 20px}
+  .stat-num{font-size:28px;font-weight:600;letter-spacing:-.025em;color:var(--ink);display:block;line-height:1}
+  .stat-num.ok{color:var(--ok)}.stat-num.warn{color:var(--warn)}.stat-num.crit{color:var(--high)}
+  .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;display:block}
+  .stat-sub{font-size:12px;color:var(--ink-dim);margin-top:4px}
+
+  /* Tabs */
+  .tabs-bar{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:42px 0 28px;overflow-x:auto;flex-wrap:nowrap}
+  .tab-btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);background:transparent;border:none;padding:14px 20px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s var(--ease);white-space:nowrap}
+  .tab-btn:hover{color:var(--ink)}
+  .tab-btn.active{color:var(--emerald);border-bottom-color:var(--emerald)}
+  .tab-panel{display:none}.tab-panel.active{display:block}
+
+  /* Tables */
+  .tbl-wrap{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+  table.data{width:100%;border-collapse:collapse;font-size:13px}
+  table.data th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);font-weight:500;background:rgba(0,0,0,.18)}
+  table.data td{padding:14px 16px;border-bottom:1px solid var(--line-soft);color:var(--ink-dim);vertical-align:top}
+  table.data tr:last-child td{border-bottom:none}
+  table.data td.name{color:var(--ink);font-weight:500}
+  table.data td.mono,table.data td .mono{font-family:var(--mono);font-size:12px;color:var(--ink-dim)}
+  table.data tr:hover td{background:rgba(255,255,255,.02)}
+
+  /* Status pills */
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+  .pill.ok{background:rgba(105,227,179,.12);color:var(--ok);border:1px solid rgba(105,227,179,.25)}
+  .pill.warn{background:rgba(251,191,36,.12);color:var(--warn);border:1px solid rgba(251,191,36,.25)}
+  .pill.high{background:rgba(251,113,133,.13);color:var(--high);border:1px solid rgba(251,113,133,.28)}
+  .pill.crit{background:rgba(255,107,149,.18);color:var(--crit);border:1px solid rgba(255,107,149,.4)}
+  .pill.info{background:rgba(34,211,238,.1);color:var(--cyan);border:1px solid rgba(34,211,238,.22)}
+  .pill.neutral{background:rgba(255,255,255,.04);color:var(--ink-dim);border:1px solid var(--line)}
+
+  /* Cards */
+  .grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px;position:relative}
+  .card-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+  .card h3{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-.015em}
+  .card p{color:var(--ink-dim);font-size:13.5px;line-height:1.55}
+  .card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+  /* Audit chain — vertical list */
+  .audit-chain{font-family:var(--mono);font-size:12px;background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+  .audit-row{display:grid;grid-template-columns:96px 1fr 220px 88px;gap:14px;padding:12px 16px;border-bottom:1px solid var(--line-soft);align-items:center}
+  .audit-row:last-child{border-bottom:none}
+  .audit-row:nth-child(odd){background:rgba(0,0,0,.1)}
+  .audit-row .ts{color:var(--ink-faint);font-size:11px}
+  .audit-row .kind{color:var(--ink)}
+  .audit-row .res{color:var(--ink-dim);font-size:11px}
+  .audit-row .hash{color:var(--cyan);font-size:10px;text-align:right;font-weight:500}
+  .chain-banner{padding:14px 16px;background:rgba(105,227,179,.06);border-bottom:1px solid rgba(105,227,179,.15);color:var(--ok);font-size:12px;font-family:var(--mono)}
+  .chain-banner strong{font-weight:500}
+
+  /* Block-level */
+  section.block{padding:48px 0;position:relative;z-index:2}
+  .block-narrow{max-width:820px;margin:0 auto}
+  h2{font-size:28px;font-weight:600;letter-spacing:-.025em;margin-bottom:14px;color:var(--ink)}
+  h2 .grad{background:linear-gradient(110deg,var(--violet),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .prose{color:var(--ink-dim);font-size:15px;line-height:1.65;margin-bottom:14px;max-width:74ch}
+  .prose strong{color:var(--ink);font-weight:500}
+  .prose code{font-family:var(--mono);font-size:13px;background:var(--surface);padding:2px 6px;border-radius:4px;color:var(--cyan)}
+  .prose a{color:var(--emerald);text-decoration:none;border-bottom:1px solid rgba(52,211,153,.3)}.prose a:hover{border-bottom-color:var(--emerald)}
+
+  /* Footer */
+  footer{padding:48px 0 36px;border-top:1px solid var(--line-soft);margin-top:36px;position:relative;z-index:2;color:var(--ink-faint);font-size:12px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer a{color:var(--ink-dim);text-decoration:none;border-bottom:1px solid var(--line)}footer a:hover{color:var(--ink);border-bottom-color:var(--ink-dim)}
+
+  ::selection{background:var(--violet);color:var(--onyx)}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a href="/" class="kg-logo" aria-label="Kinetic Gain home">
+      <svg class="kg-mark" viewBox="-8 -8 188 88" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kinetic Gain mark">
+        <rect class="anchor" x="0" y="0" width="14" height="72"/>
+        <polygon class="bar" points="32,0 83,0 77,18 26,18"/>
+        <polygon class="bar" points="32,27 127,27 121,45 26,45"/>
+        <polygon class="bar" points="32,54 172,54 166,72 26,72"/>
+      </svg>
+      <span class="kg-word">Kinetic Gain <span class="kg-word-dim">/ PAM Certification</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a data-tab="overview" class="active">Overview</a>
+      <a data-tab="anomalies">Anomalies</a>
+      <a data-tab="sync">ServiceNow</a>
+      <a data-tab="audit">Audit chain</a>
+    </nav>
+    <a class="btn-start" href="https://github.com/mizcausevic-dev/cyberark-access-certification-mesh" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <span class="eyebrow"><span class="dot"></span>IAM · Privileged Access Governance</span>
+  <h1>PAM certification, anomaly detection,<br /><span class="grad">ServiceNow-bridged</span>.</h1>
+  <p class="hero-sub">30 synthetic CyberArk PAM safes · 6 detected anomaly patterns · ServiceNow access-review ticket sync · ed25519-signed hash-chained audit. Buyer-facing operator surface, browser-only, no live data.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Total safes</span><span class="stat-sub">synthetic Continental Banking & Trust</span></div><div class="stat"><span class="stat-num crit">9</span><span class="stat-label">Overdue certs</span><span class="stat-sub">84-day max gap</span></div><div class="stat"><span class="stat-num warn">11</span><span class="stat-label">In review</span><span class="stat-sub">open ServiceNow tickets</span></div><div class="stat"><span class="stat-num ok">783</span><span class="stat-label">Member entitlements</span><span class="stat-sub">across all safes</span></div>
+  </div>
+</section>
+
+<div class="tabs-bar" role="tablist">
+  <button class="tab-btn active" data-tab="overview" role="tab">Overview</button>
+  <button class="tab-btn" data-tab="anomalies" role="tab">Anomalies</button>
+  <button class="tab-btn" data-tab="sync" role="tab">ServiceNow</button>
+  <button class="tab-btn" data-tab="audit" role="tab">Audit chain</button>
+</div>
+<section class="tab-panel active" data-panel="overview"><h2>Safes overview — <span class="grad">Continental Banking & Trust</span></h2><p class="prose">30 synthetic CyberArk PAM safes across infra, SaaS, identity, and secrets-management tiers. <strong>9 currently overdue</strong> (3 at crit-severity 30+ days). Quarterly-cert clock starts at safe creation; ServiceNow tickets auto-open at T-7d.</p><div class="tbl-wrap"><table class="data"><thead><tr><th>Safe</th><th>Classification</th><th>Owner</th><th>Status</th><th>Members</th><th>SNOW Tix</th></tr></thead><tbody><tr><td class="name">PROD-DB-Oracle</td><td>Database / Oracle</td><td>Sandra Volkov</td><td><span class="pill crit">Overdue 14d</span></td><td><span class="mono">67</span></td><td><span class="mono">2 SNOW</span></td></tr><tr><td class="name">PROD-DB-Postgres</td><td>Database / Postgres</td><td>Jamal Reeves</td><td><span class="pill warn">In review</span></td><td><span class="mono">102</span></td><td><span class="mono">7 SNOW</span></td></tr><tr><td class="name">PROD-Linux-Sudoers</td><td>Linux / sudoers</td><td>Priya Anand</td><td><span class="pill ok">Current</span></td><td><span class="mono">41</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Windows-DA</td><td>Windows / Domain Admin</td><td>Erin Kowalski</td><td><span class="pill crit">Overdue 3d</span></td><td><span class="mono">12</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-K8s-ClusterAdmin</td><td>K8s / cluster-admin</td><td>Marcus Liu</td><td><span class="pill warn">In review</span></td><td><span class="mono">8</span></td><td><span class="mono">4 SNOW</span></td></tr><tr><td class="name">PROD-AWS-OrgRoot</td><td>AWS / Organization</td><td>(unassigned)</td><td><span class="pill crit">Overdue 41d</span></td><td><span class="mono">3</span></td><td><span class="mono">1 SNOW</span></td></tr><tr><td class="name">PROD-Azure-GlobalAdmin</td><td>Azure / Global Admin</td><td>Sandra Volkov</td><td><span class="pill warn">In review</span></td><td><span class="mono">11</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-GCP-OrgOwner</td><td>GCP / Org Owner</td><td>Marcus Liu</td><td><span class="pill ok">Current</span></td><td><span class="mono">5</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">STAGE-DB-MySQL</td><td>Database / MySQL</td><td>Jamal Reeves</td><td><span class="pill crit">Overdue 56d</span></td><td><span class="mono">89</span></td><td><span class="mono">18 SNOW</span></td></tr><tr><td class="name">STAGE-AppServer-Tomcat</td><td>App / Tomcat</td><td>Erin Kowalski</td><td><span class="pill ok">Current</span></td><td><span class="mono">34</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">DEV-Jenkins-Build</td><td>CI / Jenkins</td><td>Priya Anand</td><td><span class="pill warn">In review</span></td><td><span class="mono">67</span></td><td><span class="mono">3 SNOW</span></td></tr><tr><td class="name">DEV-SourceControl-GitLab</td><td>CI / GitLab</td><td>Priya Anand</td><td><span class="pill ok">Current</span></td><td><span class="mono">92</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Cassandra-Ring</td><td>Database / Cassandra</td><td>Sandra Volkov</td><td><span class="pill crit">Overdue 19d</span></td><td><span class="mono">28</span></td><td><span class="mono">6 SNOW</span></td></tr><tr><td class="name">PROD-Salesforce-Admin</td><td>SaaS / Salesforce</td><td>Erin Kowalski</td><td><span class="pill warn">In review</span></td><td><span class="mono">19</span></td><td><span class="mono">1 SNOW</span></td></tr><tr><td class="name">PROD-Workday-Tenant</td><td>SaaS / Workday</td><td>(unassigned)</td><td><span class="pill crit">Overdue 84d</span></td><td><span class="mono">11</span></td><td><span class="mono">22 SNOW</span></td></tr><tr><td class="name">PROD-NetworkOps-Bastion</td><td>Network / Bastion</td><td>Marcus Liu</td><td><span class="pill warn">In review</span></td><td><span class="mono">7</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Splunk-Index-Admin</td><td>Observability / Splunk</td><td>Priya Anand</td><td><span class="pill ok">Current</span></td><td><span class="mono">23</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Datadog-Org-Admin</td><td>Observability / Datadog</td><td>Sandra Volkov</td><td><span class="pill warn">In review</span></td><td><span class="mono">15</span></td><td><span class="mono">4 SNOW</span></td></tr><tr><td class="name">PROD-Snowflake-AccountAdmin</td><td>Data / Snowflake</td><td>Marcus Liu</td><td><span class="pill ok">Current</span></td><td><span class="mono">38</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Vault-Root</td><td>Secrets / HashiCorp Vault</td><td>Jamal Reeves</td><td><span class="pill crit">Overdue 38d</span></td><td><span class="mono">6</span></td><td><span class="mono">11 SNOW</span></td></tr><tr><td class="name">STAGE-Kafka-ClusterAdmin</td><td>Messaging / Kafka</td><td>Erin Kowalski</td><td><span class="pill warn">In review</span></td><td><span class="mono">14</span></td><td><span class="mono">5 SNOW</span></td></tr><tr><td class="name">PROD-PagerDuty-AccountOwner</td><td>ITSM / PagerDuty</td><td>Marcus Liu</td><td><span class="pill ok">Current</span></td><td><span class="mono">4</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Okta-SuperAdmin</td><td>Identity / Okta</td><td>Sandra Volkov</td><td><span class="pill warn">In review</span></td><td><span class="mono">9</span></td><td><span class="mono">2 SNOW</span></td></tr><tr><td class="name">PROD-1Password-OrgAdmin</td><td>Secrets / 1Password</td><td>Priya Anand</td><td><span class="pill ok">Current</span></td><td><span class="mono">6</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">DEV-TerraformCloud-OrgAdmin</td><td>IaC / TF Cloud</td><td>Jamal Reeves</td><td><span class="pill warn">In review</span></td><td><span class="mono">12</span></td><td><span class="mono">1 SNOW</span></td></tr><tr><td class="name">PROD-Cloudflare-SuperAdmin</td><td>Edge / Cloudflare</td><td>Erin Kowalski</td><td><span class="pill crit">Overdue 33d</span></td><td><span class="mono">7</span></td><td><span class="mono">9 SNOW</span></td></tr><tr><td class="name">PROD-Cisco-Meraki-OrgAdmin</td><td>Network / Meraki</td><td>Marcus Liu</td><td><span class="pill ok">Current</span></td><td><span class="mono">4</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-Veeam-Backup-Admin</td><td>Backup / Veeam</td><td>Sandra Volkov</td><td><span class="pill warn">In review</span></td><td><span class="mono">9</span></td><td><span class="mono">—</span></td></tr><tr><td class="name">PROD-VMware-vCenter-Admin</td><td>Infra / vCenter</td><td>Priya Anand</td><td><span class="pill crit">Overdue 26d</span></td><td><span class="mono">18</span></td><td><span class="mono">8 SNOW</span></td></tr><tr><td class="name">PROD-ServiceNow-AdminRole</td><td>ITSM / ServiceNow</td><td>Jamal Reeves</td><td><span class="pill ok">Current</span></td><td><span class="mono">22</span></td><td><span class="mono">—</span></td></tr></tbody></table></div></section><section class="tab-panel" data-panel="anomalies"><h2>Anomaly detector — <span class="grad">6 patterns surfaced</span></h2><p class="prose">Patterns matched across all 30 safes: self-review SoD, dormant credentials (>180d), break-glass usage spikes, unassigned ownership, MFA-bypass abuse, cross-safe lateral movement. Each anomaly carries a specific regulatory anchor.</p><div class="grid-cards"><div class="card"><div class="card-eyebrow">Self-review detected</div><h3>Owner is also a privileged member</h3><p><strong>PROD-AWS-OrgRoot</strong> owner (Sandra Volkov) appears in the safe's member list with <code>privileged</code> entitlement. Self-review violates SOX ITGC segregation-of-duties — reviewer cannot also be reviewed. Reassign owner to peer in IAM team.</p><div class="meta"><span class="pill high">SOX ITGC</span><span class="pill crit">Reviewer self-review</span><span class="pill warn">Open finding</span></div></div><div class="card"><div class="card-eyebrow">Dormant credential</div><h3>Vault credential unused for 187 days</h3><p><strong>PROD-Vault-Root</strong> contains a service-account credential (<code>svc-vault-rotator</code>) last used 187 days ago. Either rotate-and-rebind to current usage or revoke per CIS Control 5.6.</p><div class="meta"><span class="pill high">CIS 5.6</span><span class="pill crit">Dormant >180d</span></div></div><div class="card"><div class="card-eyebrow">Break-glass spike</div><h3>5× normal usage in last 7 days</h3><p><strong>PROD-Windows-DA</strong> break-glass credential checked out 12 times in last 7 days vs 7-day rolling avg of 2.4. Investigate root cause (incident? misconfigured runbook?) per NYDFS 500.7.</p><div class="meta"><span class="pill high">NYDFS 500.7</span><span class="pill warn">Usage anomaly</span></div></div><div class="card"><div class="card-eyebrow">Unassigned ownership</div><h3>Safe owner = (unassigned)</h3><p><strong>PROD-AWS-OrgRoot</strong> and <strong>PROD-Workday-Tenant</strong> both have <code>(unassigned)</code> as owner. ISO 27001 A.9.2.3 requires named owner per privileged access path. Assign within 5 business days.</p><div class="meta"><span class="pill warn">ISO 27001 A.9.2.3</span><span class="pill warn">2 safes</span></div></div><div class="card"><div class="card-eyebrow">MFA-bypass usage</div><h3>Bypass token used 3× in 24h</h3><p><strong>PROD-Okta-SuperAdmin</strong> MFA-bypass emergency token used 3 times yesterday by Sandra Volkov. Configured for break-glass only. Investigate normal MFA-flow failure or revoke bypass tier.</p><div class="meta"><span class="pill crit">MFA bypass</span><span class="pill high">PCI DSS 8.4</span><span class="pill crit">Same actor</span></div></div><div class="card"><div class="card-eyebrow">Cross-safe escalation pattern</div><h3>Lateral pattern across 3 prod safes</h3><p>Actor <code>jamal-reeves</code> requested elevated entitlements across <strong>PROD-DB-Postgres</strong>, <strong>PROD-Vault-Root</strong>, and <strong>STAGE-DB-MySQL</strong> within 6-hour window. Pattern matches CIS 6.7 lateral-movement signature. Force re-justification of all 3.</p><div class="meta"><span class="pill high">CIS 6.7</span><span class="pill warn">Pattern match</span><span class="pill warn">Multi-safe</span></div></div></div></section><section class="tab-panel" data-panel="sync"><h2>ServiceNow access-review sync</h2><p class="prose">Live sync to ServiceNow Access Review module via existing <code>cyberark-connector-observability-exporter</code> pipeline. Tickets created on certification-overdue event, closed on reviewer-decision event. Stale-ticket auto-escalation at 21 days.</p><div class="tbl-wrap"><table class="data"><thead><tr><th>Ticket</th><th>Subject</th><th>State</th><th>Assignee</th><th>Age</th></tr></thead><tbody><tr><td class="mono">SNOW-RITM4421882</td><td>PROD-DB-Oracle quarterly cert</td><td><span class="pill warn">Awaiting review</span></td><td>Sandra Volkov</td><td>8 days open</td></tr><tr><td class="mono">SNOW-RITM4422001</td><td>PROD-Windows-DA emergency review</td><td><span class="pill ok">Approved</span></td><td>Erin Kowalski</td><td>Closed 2d ago</td></tr><tr><td class="mono">SNOW-RITM4422103</td><td>PROD-AWS-OrgRoot annual cert</td><td><span class="pill crit">Escalated</span></td><td>(unassigned)</td><td>21 days open</td></tr><tr><td class="mono">SNOW-RITM4422244</td><td>PROD-Vault-Root rotation review</td><td><span class="pill warn">Awaiting review</span></td><td>Jamal Reeves</td><td>11 days open</td></tr><tr><td class="mono">SNOW-RITM4422311</td><td>PROD-Salesforce-Admin quarterly</td><td><span class="pill warn">In review</span></td><td>Erin Kowalski</td><td>4 days open</td></tr><tr><td class="mono">SNOW-RITM4422401</td><td>STAGE-DB-MySQL biannual</td><td><span class="pill warn">Awaiting evidence</span></td><td>Jamal Reeves</td><td>16 days open</td></tr><tr><td class="mono">SNOW-RITM4422477</td><td>PROD-Okta-SuperAdmin MFA-bypass review</td><td><span class="pill warn">In review</span></td><td>Sandra Volkov</td><td>3 days open</td></tr><tr><td class="mono">SNOW-RITM4422511</td><td>PROD-Cloudflare-SuperAdmin biannual</td><td><span class="pill info">Reassigned</span></td><td>Erin Kowalski</td><td>9 days open</td></tr></tbody></table></div></section><section class="tab-panel" data-panel="audit"><h2>Audit chain</h2><p class="prose">Every certification action — cert started, review decision recorded, anomaly flagged, member added/removed, SNOW ticket opened — is emitted as a hash-chained event. Each event signs the prior event's hash, making the log tamper-evident.</p><div class="audit-chain"><div class="chain-banner">⛓ <strong>Audit chain</strong> · ed25519-signed, hash-chained per CIS Control 8.5 audit-log integrity. Verify via mcp-kinetic-gain → audit_chain_verify tool.</div><div class="audit-row"><span class="ts">2026-06-02T14:42:11Z</span><span class="kind">cert.cyberark.cert-started</span><span class="res">PROD-DB-Oracle (annual)</span><span class="hash">…a3f8e2</span></div><div class="audit-row"><span class="ts">2026-06-02T14:38:04Z</span><span class="kind">cert.cyberark.review-decision-recorded</span><span class="res">PROD-Windows-DA (approve, 12 members)</span><span class="hash">…9d12c1</span></div><div class="audit-row"><span class="ts">2026-06-02T14:21:55Z</span><span class="kind">cert.cyberark.anomaly-flagged</span><span class="res">PROD-Okta-SuperAdmin (mfa-bypass spike)</span><span class="hash">…7b04a9</span></div><div class="audit-row"><span class="ts">2026-06-02T13:55:32Z</span><span class="kind">cert.cyberark.overdue-escalated</span><span class="res">PROD-AWS-OrgRoot (41 days overdue)</span><span class="hash">…5e91ff</span></div><div class="audit-row"><span class="ts">2026-06-02T13:42:09Z</span><span class="kind">cert.cyberark.cert-started</span><span class="res">PROD-K8s-ClusterAdmin (quarterly)</span><span class="hash">…3c8a02</span></div><div class="audit-row"><span class="ts">2026-06-02T13:18:46Z</span><span class="kind">cert.cyberark.snow-ticket-opened</span><span class="res">SNOW-RITM4422103 (PROD-AWS-OrgRoot)</span><span class="hash">…1f5d7e</span></div><div class="audit-row"><span class="ts">2026-06-02T12:44:31Z</span><span class="kind">cert.cyberark.member-removed</span><span class="res">PROD-Cassandra-Ring (offboarded actor)</span><span class="hash">…b48211</span></div><div class="audit-row"><span class="ts">2026-06-02T12:11:18Z</span><span class="kind">cert.cyberark.review-decision-recorded</span><span class="res">PROD-Vault-Root (revoke dormant cred)</span><span class="hash">…8a7c33</span></div></div></section>
+<section class="block block-narrow">
+  <h2>Why this surface exists</h2>
+  <p class="prose">CyberArk PAM is the standard for privileged access vaulting in regulated industries (banking, healthcare, defense). The runtime ops problem is not <em>storing</em> the credential — it's <em>continuously certifying</em> that the right humans still need privileged access, before SOX/ISO audit windows close. This surface compresses the cycle time of quarterly cert from 4-6 weeks down to 4-6 days by visualizing the 5 anomaly patterns auditors look for.</p>
+  <p class="prose"><strong>Buyer:</strong> CyberArk admins · Compliance teams running quarterly PAM access reviews · Audit committees · ISO 27001 / SOC 2 / NYDFS auditors during evidence-collection windows.</p>
+  <p class="prose"><strong>Regulatory anchors:</strong> SOX ITGC · PCI DSS 4.0 (Req 7 + 8) · NIST 800-53 AC-2/AC-5/AC-6 · CIS Controls v8 Control 5/6 · ISO 27001 A.9 · NYDFS Part 500.7.</p>
+  <p class="prose"><strong>KG Suite tie-back:</strong> Every operator decision on this surface emits an <a href="https://suite.kineticgain.com/#audit-stream">audit-stream</a> event (hash-chained, ed25519-signable). Vault-contract data classification follows the <a href="https://decisions.kineticgain.com/">Decision Card v0.3</a> pattern (<code>data_vault_targets</code> + <code>retention_envelope</code>). Incident escalations match the <a href="https://incidents.kineticgain.com/">AI Incident Card</a> profile shape. Evidence bundles align with the <a href="https://evidence.kineticgain.com/">AI Evidence Format</a> spec.</p>
+  <p class="prose"><strong>Static-only doctrine:</strong> No backend. No login. No telemetry. All synthetic data is baked into this HTML page as JavaScript constants. Nothing leaves the tab. Frame as <em>readiness / evidence / posture / controls / scaffolding</em> — never "compliant" or "certified" without an externally-attested audit.</p>
+</section>
+</main>
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <strong style="color:var(--ink)">Kinetic Gain LLC</strong> · Boston, MA · <a href="https://kineticgain.com/">apex</a> · <a href="https://suite.kineticgain.com/">Suite</a> · <a href="https://github.com/mizcausevic-dev/cyberark-access-certification-mesh">source</a>
+    </div>
+    <div>
+      <a href="https://kineticgain.com/constellation/">/constellation/</a> · v0.1-shipped · AGPL-3.0
+    </div>
+  </div>
+</footer>
+<script>
+  // Tab switcher
+  const tabs = document.querySelectorAll('.tab-btn, .nav-links a[data-tab]');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(t => t.addEventListener('click', e => {
+    e.preventDefault();
+    const id = t.dataset.tab;
+    tabs.forEach(x => x.classList.toggle('active', x.dataset.tab === id));
+    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === id));
+  }));
+</script>
+</body></html>
