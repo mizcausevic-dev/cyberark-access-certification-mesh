@@ -2,10 +2,10 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
 [![CI](https://github.com/mizcausevic-dev/cyberark-access-certification-mesh/actions/workflows/ci.yml/badge.svg)](https://github.com/mizcausevic-dev/cyberark-access-certification-mesh/actions/workflows/ci.yml)
-[![Status: v1.0-prod](https://img.shields.io/badge/Status-v1.0--prod-brightgreen.svg)](#status)
+[![Status: static demo](https://img.shields.io/badge/Status-static%20demo-blue.svg)](#status)
 [![Static · No backend · No telemetry](https://img.shields.io/badge/Static-No%20backend%20%C2%B7%20No%20telemetry-green.svg)](#static-only)
 
-Operator surface for CyberArk PAM safe certifications, anomaly detection, and ServiceNow access-review ticket sync.
+Static, synthetic walkthrough of CyberArk PAM safe certification, anomaly review, and a proposed ServiceNow ticket handoff.
 
 Single-page operator surface served as static HTML — no backend, no login, no telemetry. Synthetic data only. Part of the Kinetic Gain operator-surface lane.
 
@@ -15,7 +15,7 @@ Single-page operator surface served as static HTML — no backend, no login, no 
 
 ## What this is
 
-This is **IAM / Privileged Access Governance** — a buyer-facing operator dashboard that demonstrates the shape of a runtime governance system for cyberark access certification mesh without exposing any live tenant data. Synthetic data lets prospects and reviewers explore the workflow end-to-end before they ever connect a real source.
+This is **IAM / Privileged Access Governance** — a buyer-facing illustration of a possible operator workflow. It does not connect to CyberArk or ServiceNow, make certification decisions, or write audit events.
 
 ## Buyer
 
@@ -31,14 +31,14 @@ The page is pre-loaded with synthetic data modeled on **Continental Banking & Tr
 
 ## Status
 
-`v1.0-prod` — hardened 2026-06-02. CI green on Node 20+22, 15 structure + data-integrity tests passing, HTML5-validated, security headers verified in .htaccess. See `.release-notes.md`.
+Deployed **static demo**. The page is available at the live URL, but its integrations, tickets, signatures, and audit events are examples. Run the repository checks before merging any change; a deployment requires separate live verification.
 
 ## Static only
 
 - No backend. No database. No login. No telemetry.
-- Synthetic data is baked into the HTML as JavaScript constants.
-- All filtering, sorting, audit-chain rendering happens client-side.
-- Hostinger native git pull deploy via FTP-Deploy-Action.
+- Synthetic data is embedded in the HTML; the only script switches tabs.
+- The visible audit hashes are illustrative suffixes, not verifiable signatures.
+- A push to `main` triggers the Hostinger FTPS deployment workflow.
 
 ## Language posture
 
@@ -46,13 +46,14 @@ Per the Kinetic Gain public-language guardrail across HIPAA · FERPA · SOC 2 ·
 
 ## License
 
-AGPL-3.0. The KG Suite specs that compose with this surface (Decision Card v0.3 vault contract, AI Incident Card, AI Evidence Format, audit-stream) are MIT — see [github.com/mizcausevic-dev/kinetic-gain-protocol-suite](https://github.com/mizcausevic-dev/kinetic-gain-protocol-suite).
+AGPL-3.0. The related KG Suite specifications are MIT; this static page does not execute them. See [kinetic-gain-protocol-suite](https://github.com/mizcausevic-dev/kinetic-gain-protocol-suite).
 
 ## See also
 
-- [Kinetic Gain Protocol Suite hub](https://suite.kineticgain.com/) — the 11 specs + 11 vertical 6-packs
+- [Kinetic Gain Protocol Suite hub](https://suite.kineticgain.com/) — twelve open specifications
+- [mcp-kinetic-gain](https://github.com/mizcausevic-dev/mcp-kinetic-gain) — published v0.10.0 MCP server with 75 tools across the Suite; separate from this demo
 - [Apex /constellation/](https://kineticgain.com/constellation/) — full grouped index of all kineticgain.com surfaces
-- [Portfolio dashboard](https://portfolio.kineticgain.com/) — programmatic catalog of 555+ public repos
+- [Kinetic Gain public repositories](https://github.com/mizcausevic-dev/mizcausevic-dev/blob/main/docs/REPOSITORIES.md) — dated account-wide index
 
 ## Author
 
